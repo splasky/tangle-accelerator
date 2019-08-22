@@ -38,6 +38,10 @@ container_repositories()
 
 load("@io_bazel_rules_docker//cc:image.bzl", _cc_image_repos = "repositories")
 
+load("@io_bazel_rules_docker//toolchains/docker:toolchain.bzl",
+    docker_toolchain_configure="toolchain_configure"
+)
+
 iota_deps()
 
 third_party_deps()
