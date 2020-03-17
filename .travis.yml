@@ -20,8 +20,9 @@ addons:
     project:
       name: "DLTcollab/tangle-accelerator"
       description: "Accelerate IOTA transactions by caching API requests and redirecting to faster alternatives"
+    notification_email: vulxj0j8j8@gmail.com
     build_command_prepend: ""
     build_command: "bash tests/coverity_analysis.sh"
-    branch_pattern: develop
+    branch_pattern: coverity_scan
 
 script: if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
