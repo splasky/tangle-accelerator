@@ -14,6 +14,7 @@
 
 #include <stdint.h>
 #include "common/ta_errors.h"
+#include <stdbool.h>
 
 /**
  * @file endpoint/endpoint_core.h
@@ -62,4 +63,16 @@ status_t send_transaction_information(const char* host, const char* port, const 
  */
 status_t resolve_ip_address(const char* host, char* result);
 
+status_t rolling_key_generator(const char* hw_info, const size_t hw_info_len, 
+const ta_cipher_ctx* cipher_ctx, 
+char* ecdsa_key, size_t ecdsa_key_len
+char* signed, size_t signed_len,
+char* cipher_text, size_t cipher_text_len
+);
+
+in :iv , iv_len 
+out : aes_key, key length
+status_t hkdf(char* iv, size_t iv_len, char* aes_key, size_t *aes_key_len);
+
+status_t hmac(char* plaintext, size_t p_len, char* private_key, size_t p_key_len, char* hmac, size_t hmac_len);
 #endif  // ENDPOINT_CORE_H

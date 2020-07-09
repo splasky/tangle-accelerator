@@ -59,11 +59,16 @@ void test_endpoint(void) {
   TEST_ASSERT(ret == SC_OK);
 }
 
+void test_rolling_key(void){
+  
+}
+
 int main(void) {
   UNITY_BEGIN();
   endpoint_init();
 
   RUN_TEST(test_endpoint);
+  RUN_TEST(test_rolling_key);
 
   endpoint_destroy();
   return UNITY_END();
