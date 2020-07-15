@@ -22,10 +22,17 @@ function build_legato_repo() {
 	make -C legato localhost
 }
 
-function setup_leaf() {
-	if ! which "leaf"; then
-		echo "Please install Legato leaf first"
-		exit 1
-	fi
-	leaf --non-interactive setup legato-latest -p "$1"
+function setup_leaf(){
+    if ! which "leaf";
+    then 
+        echo "Please install Legato leaf first"
+        exit 1
+    fi
+
+    error_message=$(leaf --non-interactive setup "$1" -p "$2" 2>&1)
+    if ! echo "$error_message" | grep "Profile name "$1" already exists in current workspace";
+    then
+        echo "Error occurred when setup leaf profile"
+        exit 1
+    fi
 }

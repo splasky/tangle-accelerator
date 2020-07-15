@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-set -uo pipefail
 
 COMMON_FILE="tests/endpoint/common.sh"
 
@@ -11,7 +10,9 @@ fi
 source $COMMON_FILE
 
 # setup WP77 leaf shell
-setup_leaf "swi-wp77_3.4.0"
+setup_leaf "wp77-latest" "swi-wp77_3.4.0"
 
-make TESTS=true EP_TARGET=wp77xx EP_TA_HOST=node.deviceproof.org EP_TA_PORT=5566 legato &&
-	tar zcf endpoint.tgz endpoint/_build_endpoint/wp77xx/app/endpoint/staging/read-only/
+set -euo pipefail
+
+make TESTS=true EP_TARGET=wp77xx EP_TA_HOST=node.deviceproof.org EP_TA_PORT=5566 legato && \
+tar zcf endpoint-wp77xx.tgz endpoint/_build_endpoint/wp77xx/app/endpoint/staging/read-only/

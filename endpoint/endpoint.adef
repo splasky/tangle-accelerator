@@ -11,6 +11,27 @@ processes:
     }
 }
 
+requires:
+{
+	file:
+    {
+        // needed for networking:
+        /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+        /etc/nsswitch.conf /etc/
+        /etc/hosts /etc/
+        /etc/resolv.conf /etc/
+
+        /bin/sh /bin/sh
+        /bin/date /bin/date
+    }
+    device:
+	{
+        [rw] /dev/null /dev/null
+        [r] /dev/urandom /dev/urandom
+        [r] /dev/random /dev/random
+	}
+}
+
 #if ${LEGATO_TARGET} = localhost
 #else
 bindings:
