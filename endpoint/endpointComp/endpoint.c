@@ -133,7 +133,7 @@ COMPONENT_INIT {
     device->op->get_device_id(device_id);
 #ifdef ENABLE_ENDPOINT_TEST
     LE_TEST_INIT;
-    LE_TEST_INFO("=== ENDPOINT TEST BEGIN ===");
+    LE_INFO("=== ENDPOINT TEST BEGIN ===");
     LE_TEST(SC_OK == send_transaction_information(host, port, ssl_seed, value, message, message_fmt, tag, address,
                                                   next_address, private_key, device_id_ptr, iv));
     LE_TEST_EXIT;
