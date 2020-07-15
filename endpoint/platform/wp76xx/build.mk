@@ -5,4 +5,4 @@
 # "LICENSE" at the root of this distribution.
 
 platform-build-command = \
-	cd endpoint && leaf shell -c "mkapp -v -t wp76xx $(LEGATO_FLAGS) endpoint.adef"
+	cd endpoint && leaf shell -c "mkapp -v -t wp76xx $(LEGATO_FLAGS) -i /home/splasky/Desktop/Biilabs/workspace/leaf-data/fx30-stable/fx30-cat1-legato/interfaces/modemServices endpoint.adef"

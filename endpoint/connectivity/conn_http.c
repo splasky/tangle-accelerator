@@ -186,7 +186,7 @@ status_t http_send_request(connect_info_t *const info, const char *req) {
 
 status_t http_read_response(connect_info_t *const info, char *res, size_t res_len) {
   size_t ret_len;
-  const uint32_t timeout_period = 5000;  // in milliseconds
+  const uint32_t timeout_period = 10000;  // in milliseconds
 
   if (info->https) {
     ret_len = mbedtls_ssl_read(info->ssl_ctx, (unsigned char *)res, res_len);
