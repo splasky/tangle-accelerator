@@ -7,11 +7,12 @@
  */
 
 #include "endpoint.h"
-#include "hal/device.h"
 
 #include "common/ta_errors.h"
 #include "endpoint/cipher.h"
 #include "endpoint/endpoint_core.h"
+#include "endpoint/platform/impl.h"
+
 #include "le_test.h"
 #include "legato.h"
 

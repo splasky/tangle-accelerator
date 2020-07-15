@@ -6,4 +6,4 @@
 
 platform-build-command = \
 	cd endpoint && \
-	mkapp -v -t wp77xx $(LEGATO_FLAGS) -i ${LEGATO_ROOT}/interfaces/modemServices endpoint.adef
+	mkapp -t $(EP_TARGET) $(LEGATO_FLAGS) -i ${LEGATO_ROOT}/interfaces/modemServices endpoint.adef
