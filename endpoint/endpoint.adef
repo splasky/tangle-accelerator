@@ -9,9 +9,6 @@ processes:
     {
         (endpoint)
     }
-
-    maxCoreDumpFileBytes: 512K
-	maxFileBytes: 512K
 }
 
 requires:
@@ -58,17 +55,8 @@ requires:
 bindings:
 {
     endpoint.endpointComp.le_secStore -> secStore.le_secStore
-    
-    endpoint.endpointComp.le_mdc -> modemService.le_mdc
-    endpoint.endpointComp.le_mrc -> modemService.le_mrc
     endpoint.endpointComp.le_sim -> modemService.le_sim
-    endpoint.endpointComp.le_sms -> modemService.le_sms
-    endpoint.endpointComp.le_data -> dataConnectionService.le_data
 }
 #endif
 
 start: manual
-sandboxed: false
-
-version: 1.0.0
-maxFileSystemBytes: 512K
