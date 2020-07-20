@@ -78,10 +78,6 @@ status_t send_transaction_information(const char* host, const char* port, const 
 
   const char* ta_host = host ? host : STR(EP_TA_HOST);
   const char* ta_port = port ? port : STR(EP_TA_PORT);
-  char ipv4[NI_MAXHOST];
-  if (resolve_ip_address(ta_host, ipv4) != SC_OK) {
-    return SC_ENDPOINT_DNS_RESOLVE_ERROR;
-  }
 
   const char* seed = ssl_seed ? ssl_seed : STR(EP_SSL_SEED);
 

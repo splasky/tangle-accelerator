@@ -102,6 +102,7 @@ requires:
     {
         le_secStore.api
         modemServices/le_sim.api
+        le_data.api
     }
 }
 #endif

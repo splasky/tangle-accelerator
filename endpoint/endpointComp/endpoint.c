@@ -124,6 +124,8 @@ COMPONENT_INIT {
 
   memcpy(iv, test_iv, AES_IV_SIZE);
   srand(time(NULL));
+  int success = 0;
+  int failed = 0;
 
   device_t* device = ta_device(STRINGIZE(EP_TARGET));
   if (device == NULL) {
@@ -131,20 +133,17 @@ COMPONENT_INIT {
   } else {
     device->op->get_key(private_key);
     device->op->get_device_id(device_id);
-#ifdef ENABLE_ENDPOINT_TEST
-    LE_TEST_INIT;
     LE_INFO("=== ENDPOINT TEST BEGIN ===");
-    LE_TEST(SC_OK == send_transaction_information(host, port, ssl_seed, value, message, message_fmt, tag, address,
-                                                  next_address, private_key, device_id_ptr, iv));
-    LE_TEST_EXIT;
-#else
-    while (true) {
+    for (int i = 0; i < 5; ++i) {
       // TODO: listen input from UART here
       status_t ret = send_transaction_information(host, port, ssl_seed, value, message, message_fmt, tag, address,
                                                   next_address, private_key, device_id_ptr, iv);
-      LE_INFO("Send transaction information return: %d", ret);
-      sleep(10);
+      if (ret == SC_OK) {
+        success += 1;
+      } else {
+        failed += 1;
+      }
     }
-#endif
   }
+  printf("Success: %d, Failed: %d\n", success, failed);
 }
