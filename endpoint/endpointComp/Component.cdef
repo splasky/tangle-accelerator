@@ -89,8 +89,6 @@ cflags:
     -I${CURDIR}/../../output_base/external/mbedtls_2_16_6/include
 }
 
-#if ${LEGATO_TARGET} = localhost
-#else
 requires:
 {
     device:
@@ -104,4 +102,3 @@ requires:
         modemServices/le_sim.api
     }
 }
-#endif
