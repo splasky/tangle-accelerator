@@ -6,4 +6,4 @@
 
 platform-build-command = \
 	cd endpoint && \
-	leaf shell -c "mkapp -v -t $(EP_TARGET) $(LEGATO_FLAGS) endpoint.adef"
+	leaf shell -c "mkapp -t $(EP_TARGET) $(LEGATO_FLAGS) endpoint.adef"
