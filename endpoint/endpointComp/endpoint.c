@@ -7,14 +7,14 @@
  */
 
 #include "endpoint.h"
-#include "hal/device.h"
 
 #include "common/ta_errors.h"
 #include "endpoint/cipher.h"
 #include "endpoint/endpoint_core.h"
+#include "endpoint/platform/impl.h"
+
 #include "le_test.h"
 #include "legato.h"
-
 #include "le_log.h"
 
 #define TEST_VALUE 0
@@ -125,12 +125,9 @@ COMPONENT_INIT {
   memcpy(iv, test_iv, AES_IV_SIZE);
   srand(time(NULL));
 
-  device_t* device = ta_device(STRINGIZE(EP_TARGET));
-  if (device == NULL) {
-    LE_ERROR("Can not get specific device");
-  } else {
-    device->op->get_key(private_key);
-    device->op->get_device_id(device_id);
+  get_device_key(private_key);
+  get_device_id(device_id);
+
 #ifdef ENABLE_ENDPOINT_TEST
     LE_TEST_INIT;
     LE_INFO("=== ENDPOINT TEST BEGIN ===");
@@ -146,5 +143,4 @@ COMPONENT_INIT {
       sleep(10);
     }
 #endif
-  }
 }

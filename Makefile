@@ -49,7 +49,7 @@ LEGATO_FLAGS += -DEP_TARGET=$(EP_TARGET)
 LEGATO_FLAGS := $(foreach flags, $(LEGATO_FLAGS), -C $(flags))
 
 # Include the build command from the specific target
-include endpoint/platform/$(EP_TARGET)/build.mk
+include endpoint/platform/default.mk
 export EP_TARGET
 
 all: $(DEPS) cert

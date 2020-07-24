@@ -1,10 +1,9 @@
 sources:
 {
     ${CURDIR}/../endpoint_core.c
-    ${CURDIR}/../hal/device.c
     
     // include the specific platform
-    ${CURDIR}/../platform/${EP_TARGET}/impl.c 
+    ${CURDIR}/../platform/impl.c 
 
     ${CURDIR}/../../output_base/external/org_iota_common/utils/logger_helper.c
 
@@ -78,6 +77,7 @@ cflags:
     -g -O0
 
     -I${CURDIR}/../..
+    -I${CURDIR}/../platform
 
     // The header files under this directory are downloaded only when the corresponding 'bazel build' command is used
     -I${CURDIR}/../../output_base/execroot/__main__/bazel-out/k8-fastbuild/bin/external/org_iota_common
