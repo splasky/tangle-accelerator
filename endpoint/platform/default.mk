@@ -9,6 +9,7 @@ export PA_DIR=${LEGATO_ROOT}/platformAdaptor
 export LEGATO_MODEM_SERVICES=${LEGATO_ROOT}/components/modemServices
 export LEGATO_SECSTORE=${LEGATO_ROOT}/components/secStore
 export ENDPOINT_DIR=$(PWD)/endpoint
+export LEGATO_UTIL_PA=${PA_DIR}/simu/components/simuConfig
 
 platform-build-command = \
 	cd endpoint && \
@@ -30,6 +31,7 @@ platform-build-command = \
 	$(LEGATO_FLAGS) \
 	endpointComp \
 	${PA_DIR}/simu/components/le_pa_secStore \
+	${PA_DIR}/simu/components/le_pa \
 	${PA_DIR}/simu/components/simuConfig
 
 	# mkapp -t $(EP_TARGET) $(LEGATO_FLAGS) endpoint.adef
