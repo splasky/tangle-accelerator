@@ -13,9 +13,9 @@
 #include "endpoint/endpoint_core.h"
 #include "endpoint/platform/impl.h"
 
+#include "le_log.h"
 #include "le_test.h"
 #include "legato.h"
-#include "le_log.h"
 
 #define TEST_VALUE 0
 #define TEST_MESSAGE "THISISMSG9THISISMSG9THISISMSG"
@@ -129,18 +129,21 @@ COMPONENT_INIT {
   get_device_id(device_id);
 
 #ifdef ENABLE_ENDPOINT_TEST
-    LE_TEST_INIT;
-    LE_INFO("=== ENDPOINT TEST BEGIN ===");
-    LE_TEST(SC_OK == send_transaction_information(host, port, ssl_seed, value, message, message_fmt, tag, address,
-                                                  next_address, private_key, device_id_ptr, iv));
-    LE_TEST_EXIT;
+  LE_TEST_INIT;
+  LE_INFO("=== ENDPOINT TEST BEGIN ===");
+  LE_TEST(SC_OK == send_transaction_information(host, port, ssl_seed, value, message, message_fmt, tag, address,
+                                                next_address, private_key, device_id_ptr, iv));
+  printf("PASS\n");
+  fprintf(stderr, "FPASS\n");
+  fprintf(stdout, "FFPASS\n");
+  LE_TEST_EXIT;
 #else
-    while (true) {
-      // TODO: listen input from UART here
-      status_t ret = send_transaction_information(host, port, ssl_seed, value, message, message_fmt, tag, address,
-                                                  next_address, private_key, device_id_ptr, iv);
-      LE_INFO("Send transaction information return: %d", ret);
-      sleep(10);
-    }
+  while (true) {
+    // TODO: listen input from UART here
+    status_t ret = send_transaction_information(host, port, ssl_seed, value, message, message_fmt, tag, address,
+                                                next_address, private_key, device_id_ptr, iv);
+    LE_INFO("Send transaction information return: %d", ret);
+    sleep(10);
+  }
 #endif
 }

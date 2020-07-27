@@ -19,8 +19,8 @@
 
 #include "common/ta_errors.h"
 
-#include "legato.h"
 #include "interfaces.h"
+#include "legato.h"
 
 #define MAXLINE 1024
 
