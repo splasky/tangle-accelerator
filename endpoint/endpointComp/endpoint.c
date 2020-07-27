@@ -13,9 +13,10 @@
 #include "endpoint/endpoint_core.h"
 #include "endpoint/platform/impl.h"
 
+#include "legato.h"
+
 #include "le_log.h"
 #include "le_test.h"
-#include "legato.h"
 
 #define TEST_VALUE 0
 #define TEST_MESSAGE "THISISMSG9THISISMSG9THISISMSG"
