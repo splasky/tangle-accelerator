@@ -14,6 +14,7 @@
 #include "endpoint/platform/impl.h"
 
 #include "legato.h"
+#include "interfaces.h"
 
 #include "le_log.h"
 #include "le_test.h"

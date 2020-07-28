@@ -17,6 +17,7 @@ platform-build-command = \
 	mkexe -o endpoint_test \
 	-w endpoint_test_build \
 	-t $(EP_TARGET) \
+	-i ${LEGATO_ROOT}/interfaces \
 	-i ${LEGATO_ROOT}/interfaces/secureStorage \
 	-i ${LEGATO_ROOT}/interfaces/modemServices \
 	-i ${LEGATO_SECSTORE}/platformAdaptor/inc \
@@ -30,6 +31,7 @@ platform-build-command = \
 	-i ${PA_DIR}/simu/components/le_pa_secStore \
 	-i ${PA_DIR}/simu/components/le_pa \
 	-i ${PA_DIR}/simu/components/simuConfig \
+	-i ${ENDPOINT_DIR}/endpointComp \
 	-i ${LEGATO_ROOT}/apps/test/framework/secStore/secStoreUnitTest/secStoreComp \
 	$(LEGATO_FLAGS) \
 	-C -g -C -static \
