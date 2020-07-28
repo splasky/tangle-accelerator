@@ -70,6 +70,12 @@ sources:
     ${CURDIR}/../../utils/tryte_byte_conv.c
 
     endpoint.c
+
+    simStub.c
+    ${LEGATO_ROOT}/components/modemServices/modemDaemon/le_sim.c
+    ${LEGATO_ROOT}/components/modemServices/modemDaemon/le_mrc.c
+    simu/components/le_pa/pa_sim_simu.c
+    simu/components/le_pa/pa_mrc_simu.c
 }
 
 cflags:
@@ -87,6 +93,10 @@ cflags:
     -I${CURDIR}/../../output_base/external/org_iota_common
     -I${CURDIR}/../../output_base/external/http_parser
     -I${CURDIR}/../../output_base/external/mbedtls_2_16_6/include
+
+    -Dle_msg_AddServiceCloseHandler=MyAddServiceCloseHandler
+    -Dle_msg_AddServiceOpenHandler=MsgAddServiceOpenHandler
+    -I${LEGATO_ROOT}/components/watchdogChain
 }
 
 requires:
@@ -98,7 +108,21 @@ requires:
     
     api:
     {
-        le_secStore.api
-        modemServices/le_sim.api
+        // For normal app:
+        // le_secStore.api
+        // modemServices/le_sim.api
+
+        // For modemService test
+        modemServices/le_mrc.api         [types-only]
+        modemServices/le_sim.api         [types-only]
+        le_cfg.api                       [types-only]
+
+        // For secStore test
+        le_secStore.api                 [types-only]
+        secureStorage/secStoreAdmin.api [types-only]
+        le_limit.api                    [types-only]
+        le_appInfo.api                  [types-only]
+        le_update.api                   [types-only]
+        le_instStat.api                 [types-only]
     }
 }
