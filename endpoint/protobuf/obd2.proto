@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package obd2;
+
+message OBD2_data{
+	string vin = 1;
+	uint32 engine_load  = 2;
+	uint32 engine_coolant_temperature = 3;
+	uint32 fuel_pressure = 4;
+	uint32 engine_speed = 5;
+	uint32 vehicle_speed = 6;
+	uint32 intake_air_temperature = 7;
+	uint32 mass_air_flow = 8;
+	uint32 fuel_tank_level_input = 9;
+	uint32 absolute_barometric_pressure = 10;
+	uint32 control_module_voltage  = 11;
+	uint32 throttle_position  = 12;
+	uint32 ambient_air_temperature  =13;
+	uint32 relative_accelerator_pedal_position = 14;
+	uint32 engine_oil_temperature = 15;
+	uint32 engine_fuel_rate = 16;
+	uint32 service_distance = 17;
+	uint32 anti_lock_barking_active  = 18;
+	uint32 steering_wheel_angle = 19;
+	uint32 position_of_doors =  20;
+	uint32 right_left_turn_signal_light  = 21;
+	uint32 alternate_beam_head_light = 22;
+	uint32 high_beam_head_light = 23;
+}
+
+message OBD2_msg_struct{
+    uint64 timestamp = 1;
+    string deviceID = 2;
+    OBD2_data obd2_data =3;
+}
+
+message msg_struct{
+    bytes hmac = 1;
+    bytes iv = 2;
+    bytes data = 3;
+}
+
